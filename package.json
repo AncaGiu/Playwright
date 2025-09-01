@@ -1,0 +1,16 @@
+{
+  "name": "curs-playwright-youtube",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.10",
+    "playwright": "^1.53.2",
+    "typescript": "^5.8.3"
+  }
+}
