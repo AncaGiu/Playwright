@@ -5,7 +5,7 @@ test.use({
     actionTimeout: 10000   //Set the action timeout to 10 seconds for all actions in test
 });
 
-test('auto wait checks 1', async()=>{
+test('auto wait check 1', async()=>{
     const browser:Browser = await chromium.launch({headless: false, channel: 'chrome'});
     const page:Page = await browser.newPage();
     // page.setDefaultTimeout(15000);
@@ -17,7 +17,7 @@ test('auto wait checks 1', async()=>{
 
 });
 
-test('auto wait checks 2', async()=>{
+test('auto wait check 2', async()=>{
     const browser:Browser = await chromium.launch({headless: false, channel: 'chrome'});
     const page:Page = await browser.newPage();
     // page.setDefaultTimeout(15000);
@@ -28,7 +28,7 @@ test('auto wait checks 2', async()=>{
 
 });
 
-test('auto wait checks 3', async()=>{
+test('auto wait check 3', async()=>{
     const browser:Browser = await chromium.launch({headless: false, channel: 'chrome'});
     const page:Page = await browser.newPage();
     // page.setDefaultTimeout(15000);
