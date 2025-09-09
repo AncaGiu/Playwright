@@ -18,7 +18,7 @@ test('login test', async()=>{
 
     await firstName.fill("Anca");
     await lastName.fill("Giu");
-    await email.fill("pwtest_@opencart.com");
+    await email.fill("pwtest_1@opencart.com");
     await telephone.fill("12345678");
     await password.fill("playwright@123");
     await confirmPassword.fill("playwright@123");
