@@ -18,10 +18,7 @@ test.beforeEach(async ({page}) => {
     
     //login 
     await page.goto('https://conduit.bondaracademy.com/')
-    await page.getByText('Sign in').click()
-    await page.getByRole('textbox', {name: "Email"}).fill('anca123@gmail.com')
-    await page.getByRole('textbox', {name: "Password"}).fill('anca_123')    
-    await page.getByRole('button').click()
+
 })
 
 test('has title', async ({ page }) => {
@@ -47,24 +44,24 @@ test('has title', async ({ page }) => {
 });
 
 test('delete article', async({page, request}) => {
-    //perform a POST request to login and get from the response the corresponding access Token
-    const response = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
-        data: {
-            "user":{"email":"anca123@gmail.com","password":"anca_123"}
-        }
-    })
-    const responseBody = await response.json()
-    console.log(responseBody)
-    const accessToken = responseBody.user.token
+    // //perform a POST request to login and get from the response the corresponding access Token
+    // const response = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
+    //     data: {
+    //         "user":{"email":"anca123@gmail.com","password":"anca_123"}
+    //     }
+    // })
+    // const responseBody = await response.json()
+    // console.log(responseBody)
+    // const accessToken = responseBody.user.token
 
     //create an article using the obtained login Token, into the POST request
     const articleResponse = await request.post('https://conduit-api.bondaracademy.com/api/articles/', {
         data: {
             "article":{"title":"this is the title ","description":"this is the article description","body":"this is the article content","tagList":[]}
-        },
-        headers: {
-        Authorization: `Token ${accessToken}`
         }
+        // headers: {
+        // Authorization: `Token ${accessToken}`
+        // }
     })
     expect (articleResponse.status()).toEqual(201)
 
@@ -95,22 +92,24 @@ test('intercept Browser API response', async({page, request}) => {
 
     await expect(page.locator('app-article-list h1').first()).toContainText('Playwright is awesome')
 
-    //perform a POST request to login and get from the response the corresponding access Token
-    const response = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
-        data: {
-            "user":{"email":"anca123@gmail.com","password":"anca_123"}
-        }
-    })
-    const responseBody = await response.json()
-    console.log(responseBody)
-    const accessToken = responseBody.user.token
+    // //perform a POST request to login and get from the response the corresponding access Token
+    // const response = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
+    //     data: {
+    //         "user":{"email":"anca123@gmail.com","password":"anca_123"}
+    //     }
+    // })
+    // const responseBody = await response.json()
+    // console.log(responseBody)
+    // const accessToken = responseBody.user.token
 
     //delete the article using the slugId from the response
-    const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugId}`, {
-        headers: {
-            Authorization: `Token ${accessToken}`
-        }
-    })
+    const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugId}`,
+        //  {
+        // headers: {
+        //     Authorization: `Token ${accessToken}`
+        // }
+        // }
+    )
 
     expect(deleteArticleResponse.status()).toEqual(204)
 
